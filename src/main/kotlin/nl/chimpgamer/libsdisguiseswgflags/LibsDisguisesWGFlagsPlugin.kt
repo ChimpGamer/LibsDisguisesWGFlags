@@ -7,7 +7,7 @@ import com.sk89q.worldguard.protection.flags.StateFlag
 import com.sk89q.worldguard.protection.flags.registry.FlagConflictException
 import com.sk89q.worldguard.session.SessionManager
 import nl.chimpgamer.libsdisguiseswgflags.listeners.LibsDisguiseListener
-import nl.chimpgamer.libsdisguiseswgflags.handlers.BlockDisguiseHandler
+import nl.chimpgamer.libsdisguiseswgflags.handlers.BlockDisguisesHandler
 import org.bukkit.Location
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
@@ -16,7 +16,7 @@ import java.util.logging.Level
 class LibsDisguisesWGFlagsPlugin : JavaPlugin() {
     val blockDisguisesFlag = StateFlag("block-disguises", true) // Default is allowed
 
-    private val blockDisguiseHandler = BlockDisguiseHandler.createFactory()
+    private val blockDisguisesHandler = BlockDisguisesHandler.createFactory()
 
     private val sessionManager: SessionManager get() = WorldGuard.getInstance().platform.sessionManager
 
@@ -26,12 +26,12 @@ class LibsDisguisesWGFlagsPlugin : JavaPlugin() {
     }
 
     override fun onEnable() {
-        sessionManager.registerHandler(blockDisguiseHandler, null)
+        sessionManager.registerHandler(blockDisguisesHandler, null)
         server.pluginManager.registerEvents(LibsDisguiseListener(this), this)
     }
 
     override fun onDisable() {
-        sessionManager.unregisterHandler(blockDisguiseHandler)
+        sessionManager.unregisterHandler(blockDisguisesHandler)
     }
 
     fun testFlag(player: Player, location: Location, stateFlag: StateFlag): Boolean {

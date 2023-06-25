@@ -14,15 +14,15 @@ import me.libraryaddict.disguise.DisguiseAPI
 import me.libraryaddict.disguise.disguisetypes.Disguise
 import nl.chimpgamer.libsdisguiseswgflags.LibsDisguisesWGFlagsPlugin
 
-class BlockDisguiseHandler(session: Session?) : FlagValueChangeHandler<State>(session, LibsDisguisesWGFlagsPlugin.instance.blockDisguisesFlag) {
+class BlockDisguisesHandler(session: Session?) : FlagValueChangeHandler<State>(session, LibsDisguisesWGFlagsPlugin.instance.blockDisguisesFlag) {
 
     companion object {
         fun createFactory(): Handler.Factory<*> = Factory()
     }
 
-    class Factory : Handler.Factory<BlockDisguiseHandler>() {
-        override fun create(session: Session?): BlockDisguiseHandler {
-            return BlockDisguiseHandler(session)
+    class Factory : Handler.Factory<BlockDisguisesHandler>() {
+        override fun create(session: Session?): BlockDisguisesHandler {
+            return BlockDisguisesHandler(session)
         }
     }
 
