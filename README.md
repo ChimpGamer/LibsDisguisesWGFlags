@@ -7,3 +7,5 @@ LibsDisguisesWGFlags is a simple plugin which currently has only one flag and on
 
 ## Flags
 - block-disguises
+
+![block-disguises flag demo](https://i.gyazo.com/f775362f6cbc8d24b201d42c60963d30.gif)
