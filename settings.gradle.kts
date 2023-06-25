@@ -1,3 +1,3 @@
 
-rootProject.name = "LibsDisguiseWGFlags"
+rootProject.name = "LibsDisguisesWGFlags"
 
