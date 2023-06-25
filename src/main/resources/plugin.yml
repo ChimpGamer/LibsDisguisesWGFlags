@@ -1,0 +1,12 @@
+name: LibsDisguiseWGFlags
+main: nl.chimpgamer.libsdisguiseswgflags.LibsDisguisesWGFlagsPlugin
+version: ${version}
+authors:
+  - ChimpGamer
+
+depend:
+  - LibsDisguises
+  - WorldGuard
+
+libraries:
+  - org.jetbrains.kotlin:kotlin-stdlib:1.8.22
