@@ -26,7 +26,7 @@ class BlockDisguisesHandler(session: Session?) : FlagValueChangeHandler<State>(s
         }
     }
 
-    private var originalDisguise: Disguise? = null
+    var originalDisguise: Disguise? = null
 
     override fun onInitialValue(player: LocalPlayer, set: ApplicableRegionSet?, value: State?) {
         handleValue(player, player.world, value)
@@ -69,6 +69,8 @@ class BlockDisguisesHandler(session: Session?) : FlagValueChangeHandler<State>(s
             } else if (DisguiseAPI.isDisguised(bukkitPlayer)) {
                 originalDisguise = DisguiseAPI.getDisguise(bukkitPlayer)
                 DisguiseAPI.undisguiseToAll(bukkitPlayer)
+            } else {
+                originalDisguise = null
             }
         } else {
             if (originalDisguise != null) {
