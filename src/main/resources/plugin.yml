@@ -3,6 +3,7 @@ main: nl.chimpgamer.libsdisguiseswgflags.LibsDisguisesWGFlagsPlugin
 version: ${version}
 authors:
   - ChimpGamer
+api-version: 1.13
 
 depend:
   - LibsDisguises
