@@ -10,4 +10,4 @@ depend:
   - WorldGuard
 
 libraries:
-  - org.jetbrains.kotlin:kotlin-stdlib:1.9.0
+  - org.jetbrains.kotlin:kotlin-stdlib:2.0.21
