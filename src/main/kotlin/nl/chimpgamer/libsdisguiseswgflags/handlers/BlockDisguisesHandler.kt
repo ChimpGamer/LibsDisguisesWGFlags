@@ -64,7 +64,7 @@ class BlockDisguisesHandler(session: Session?) : FlagValueChangeHandler<State>(s
             val value = state === State.ALLOW
             if (value && !DisguiseAPI.isDisguised(bukkitPlayer)) {
                 if (originalDisguise != null) {
-                    DisguiseAPI.disguiseEntity(bukkitPlayer, originalDisguise)
+                    DisguiseAPI.disguiseToAll(bukkitPlayer, originalDisguise)
                 }
             } else if (DisguiseAPI.isDisguised(bukkitPlayer)) {
                 originalDisguise = DisguiseAPI.getDisguise(bukkitPlayer)
@@ -74,7 +74,7 @@ class BlockDisguisesHandler(session: Session?) : FlagValueChangeHandler<State>(s
             }
         } else {
             if (originalDisguise != null) {
-                DisguiseAPI.disguiseEntity(bukkitPlayer, originalDisguise)
+                DisguiseAPI.disguiseToAll(bukkitPlayer, originalDisguise)
             }
         }
     }
