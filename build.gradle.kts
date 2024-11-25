@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "nl.chimpgamer.libsdisguiseswgflags"
-version = "1.0.1"
+version = "1.0.2-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -45,13 +45,6 @@ kotlin {
 }
 
 tasks {
-    compileKotlin {
-        kotlinOptions.jvmTarget = "17"
-    }
-    compileTestKotlin {
-        kotlinOptions.jvmTarget = "17"
-    }
-
     processResources {
         filesMatching("**/*.yml") {
             expand("version" to project.version)
