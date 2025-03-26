@@ -26,7 +26,10 @@ class BlockDisguisesHandler(session: Session?) : FlagValueChangeHandler<State>(s
         }
     }
 
-    var originalDisguise: Disguise? = null
+    /**
+     * Remember the original disguise the player was using prior
+     */
+    private var originalDisguise: Disguise? = null
 
     override fun onInitialValue(player: LocalPlayer, set: ApplicableRegionSet?, value: State?) {
         handleValue(player, player.world, value)

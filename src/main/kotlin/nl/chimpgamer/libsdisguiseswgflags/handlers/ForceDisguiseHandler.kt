@@ -27,7 +27,10 @@ class ForceDisguiseHandler(session: Session?) :
         }
     }
 
-    var originalDisguise: Disguise? = null
+    /**
+    * Remember the original disguise the player was using prior
+    */
+    private var originalDisguise: Disguise? = null
 
     override fun onInitialValue(player: LocalPlayer, set: ApplicableRegionSet?, value: String?) {
         handleValue(player, player.world, value)
