@@ -64,26 +64,24 @@ class ForceDisguiseHandler(session: Session?) :
     private fun handleValue(localPlayer: LocalPlayer, world: World, value: String?, lastValue: String? = null) {
         val bukkitPlayer = (localPlayer as BukkitPlayer).player
 
-        if (!this.session.manager.hasBypass(localPlayer, world)) {
-            if (value != null && lastValue == null) {
-                originalDisguise = if (DisguiseAPI.isDisguised(bukkitPlayer)) {
-                    DisguiseAPI.getDisguise(bukkitPlayer)
-                } else {
-                    null
-                }
-            }
-            if (value != null) {
-                val newDisguise = runCatching { DisguiseParser.parseDisguise(value) }.getOrNull()
-                if (DisguiseAPI.getDisguises(bukkitPlayer) == newDisguise) return
-                if (newDisguise != null) {
-                    DisguiseAPI.disguiseToAll(bukkitPlayer, newDisguise)
-                }
+        if (this.session.manager.hasBypass(localPlayer, world)) {
+            if (originalDisguise != null) {
+                DisguiseAPI.disguiseToAll(bukkitPlayer, originalDisguise)
             } else {
-                if (originalDisguise != null) {
-                    DisguiseAPI.disguiseToAll(bukkitPlayer, originalDisguise)
-                } else {
-                    DisguiseAPI.undisguiseToAll(bukkitPlayer)
-                }
+                DisguiseAPI.undisguiseToAll(bukkitPlayer)
+            }
+            return
+        }
+
+        if (value != null) {
+            val playerDisguise = DisguiseAPI.getDisguise(bukkitPlayer)
+            if (lastValue == null) {
+                originalDisguise = playerDisguise
+            }
+            val newDisguise = runCatching { DisguiseParser.parseDisguise(value) }.getOrNull()
+            if (playerDisguise == newDisguise) return
+            if (newDisguise != null) {
+                DisguiseAPI.disguiseToAll(bukkitPlayer, newDisguise)
             }
         } else {
             if (originalDisguise != null) {

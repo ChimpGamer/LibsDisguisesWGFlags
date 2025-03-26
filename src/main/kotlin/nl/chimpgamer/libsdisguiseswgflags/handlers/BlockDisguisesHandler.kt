@@ -63,22 +63,23 @@ class BlockDisguisesHandler(session: Session?) : FlagValueChangeHandler<State>(s
     private fun handleValue(localPlayer: LocalPlayer, world: World, state: State?) {
         val bukkitPlayer = (localPlayer as BukkitPlayer).player
 
-        if (!this.session.manager.hasBypass(localPlayer, world) && state != null) {
-            val value = state === State.ALLOW
-            if (value && !DisguiseAPI.isDisguised(bukkitPlayer)) {
-                if (originalDisguise != null) {
-                    DisguiseAPI.disguiseToAll(bukkitPlayer, originalDisguise)
-                }
-            } else if (DisguiseAPI.isDisguised(bukkitPlayer)) {
-                originalDisguise = DisguiseAPI.getDisguise(bukkitPlayer)
-                DisguiseAPI.undisguiseToAll(bukkitPlayer)
-            } else {
-                originalDisguise = null
-            }
-        } else {
+        if (this.session.manager.hasBypass(localPlayer, world) && state == null) {
             if (originalDisguise != null) {
                 DisguiseAPI.disguiseToAll(bukkitPlayer, originalDisguise)
             }
+            return
+        }
+
+        val value = state === State.ALLOW
+        if (value && !DisguiseAPI.isDisguised(bukkitPlayer)) {
+            if (originalDisguise != null) {
+                DisguiseAPI.disguiseToAll(bukkitPlayer, originalDisguise)
+            }
+        } else if (DisguiseAPI.isDisguised(bukkitPlayer)) {
+            originalDisguise = DisguiseAPI.getDisguise(bukkitPlayer)
+            DisguiseAPI.undisguiseToAll(bukkitPlayer)
+        } else {
+            originalDisguise = null
         }
     }
 }
