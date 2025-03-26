@@ -1,4 +1,5 @@
 # LibsDisguisesWGFlags
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/1415c84c3913464188b3bc385b523ae2)](https://app.codacy.com/gh/ChimpGamer/LibsDisguisesWGFlags/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 LibsDisguisesWGFlags is a simple plugin which currently has only two flags.
 
